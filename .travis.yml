@@ -19,6 +19,7 @@ after_success:
   - docker push tkdgus115/docker-frontend
   - docker push tkdgus115/docker-backend
   - docker push tkdgus115/docker-nginx
+
 deploy:
   provider: elasticbeanstalk
   region: "ap-northeast-2"

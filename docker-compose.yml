@@ -1,0 +1,25 @@
+version: "3"
+services:
+  frontend:
+    image: tkdgus115/docker-frontend
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    stdin_open: true
+  nginx:
+    restart: always
+    image: tkdgus115/docker-nginx
+    ports:
+      - "80:80"
+  backend:
+    image: tkdgus115/docker-backend
+    container_name: app_backend
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
+    environment:
+      MYSQL_HOST: $MYSQL_HOST
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABAS: $MYSQL_DATABASE
+      MYSQL_PORT: $MYSQL_PORT
